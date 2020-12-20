@@ -10,11 +10,11 @@ def prepareDB():
 
 
 def prepareCompleteDB():
-    print("DBの準備が完了しました。")
+    print("DBの準備が完了しました!")
 
 
 def inputUserNumber():
-    user_number = input("4桁の数字を入力してください。")
+    user_number = input("4桁の数字を入力してください!")
     return user_number
 
 
