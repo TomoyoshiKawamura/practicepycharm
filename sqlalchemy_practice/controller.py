@@ -7,8 +7,8 @@ logger = logging.getLogger(__name__)
 
 def save_random4number():
     # make random number 0000 ~ 9999
-    for i in range(10):
-        random_4number = random.randint(0000, 9999)
+    for i in range(9999):
+        random_4number = random.randint(0, 9999)
         # then random number into tuple
         model.save_number(random_4number)
 
@@ -18,15 +18,18 @@ def save_random4number():
 
 def checkDB(userNumber):
     dictDB = model.getDB()
-    for i in dictDB:
-        if userNumber in dictDB.values():
-            getSameNumberDB(userNumber, dictDB)
-        else:
-            return False
+    listValuesDB = list(dictDB.values())
+    for value in listValuesDB:
+        if userNumber == value:
+            return True
+    return False
 
 
-def getSameNumberDB(userNumber, dictDB):
-    for i in dictDB.keys():
-        if userNumber == dictDB.values():
-            correctNumber = dictDB.values()
-    return correctNumber
+def getSameNumberDB(userNumber):
+    correctNumber = 0000
+    dictDB = model.getDB()
+    for value in dictDB.items():
+        if userNumber == value[0]:
+            correctNumber = value[0]
+            try_number = value[1]
+    return correctNumber,try_number

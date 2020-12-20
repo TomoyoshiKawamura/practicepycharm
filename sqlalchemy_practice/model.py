@@ -33,9 +33,10 @@ def save_number(random_4number):
 
 # take out data in DB
 def getDB():
-    d = {}
     results = session.query(Number)
+    list = []
     for result in results:
-        d["main_number"] = result.main_number
-        d["random_number"] = result.random_number
+        list.append(result.random_number)
+
+    d = dict(enumerate(list))
     return d
